@@ -1,0 +1,41 @@
+{
+  "id": "case-dsc-thermal-transitions",
+  "title": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+  "sample": { "id": "sample-pet03", "name": "PET-03 同一样品履历（加热+冷却序列）" },
+  "narrative": [
+    "初始导入：仪器输出、样品质量、扫描速率、气氛、温度标定与用户选定切线分别存档（六档各自独立版本）。",
+    "参数修订：审阅者调整玻璃化后切线，产生切线新版本，玻璃化派生重算，旧版本保留。",
+    "局部源改动：扫描速率 10 -> 10.2 K/min，仅焓变派生过期，onset/peak/endset 温度保持有效。",
+    "冲突决定：两位审阅者从同一版本对熔融峰选择不同基线候选，系统记录冲突，两个分支都保留。",
+    "质量版本变更：8.42 -> 8.57 mg，所有 J/g 归一化派生过期，mJ 总量派生保持有效。",
+    "重放：任意旧事件可恢复当时的依赖版本与可见结论。"
+  ],
+  "boundaryCases": [
+    { "key": "reverse-heat-flow",   "file": "pet03-endo-up-by-name.csv", "expect": "方向取自仪器头 EndoDirection=down，文件名声称 endo-up 被忽略并记录事件" },
+    { "key": "non-uniform-grid",    "file": "pet03-heat-nonuniform.csv", "expect": "积分使用实际 ΔT，不能假设等间隔" },
+    { "key": "overlap-transitions", "file": "pet03-heat-overlap.csv",    "expect": "重叠转折产生多个基线候选，全部保留" },
+    { "key": "cycle-switch",        "file": "pet03-cycle.csv",           "expect": "循环段拆分为 加热/冷却/加热 三段，不混用" },
+    { "key": "mass-revision",       "file": null,                        "expect": "质量修订后所有 J/g 归一化派生过期" },
+    { "key": "parallel-baselines",  "file": "pet03-heat-overlap.csv",    "expect": "多个合理基线并列保留，采纳其一不删除其余" },
+    { "key": "empty-interval",      "file": "pet03-heat-main.csv",       "expect": "空区间产生 EMPTY_INTERVAL 诊断，不伪造零值" }
+  ],
+  "archives": {
+    "instrumentOutput": "pet03-heat-main.csv",
+    "mass": { "value": 8.42, "unit": "mg" },
+    "massRevised": { "value": 8.57, "unit": "mg" },
+    "scanRate": { "value": 10.0, "unit": "K/min" },
+    "scanRateRevised": { "value": 10.2, "unit": "K/min" },
+    "atmosphere": "N2 50 mL/min",
+    "temperatureCalibration": { "offsetC": 0.3, "reference": "In/Zn 熔点标定" }
+  },
+  "windows": {
+    "tg":       { "t0": 60.0, "t1": 95.0,  "label": "玻璃化" },
+    "coldX":    { "t0": 115.0, "t1": 155.0, "label": "冷结晶" },
+    "melt":     { "t0": 232.0, "t1": 268.0, "label": "熔融" },
+    "coolX":    { "t0": 220.0, "t1": 190.0, "label": "冷却结晶" },
+    "empty":    { "t0": 300.0, "t1": 310.0, "label": "空区间" },
+    "overlap":  { "t0": 60.0, "t1": 105.0, "label": "重叠转折" },
+    "meltNu":   { "t0": 232.0, "t1": 268.0, "label": "熔融(非等间隔)" },
+    "meltRev":  { "t0": 232.0, "t1": 268.0, "label": "熔融(反向热流)" }
+  }
+}
