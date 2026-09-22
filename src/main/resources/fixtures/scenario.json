@@ -1,0 +1,12 @@
+{
+  "case": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+  "sample": "ALLOY-X batch 7",
+  "narrative": "材料组将加热与冷却 DSC 序列放入同一样品履历，为玻璃化、结晶与熔融事件建立可重算的基线与积分。",
+  "steps": [
+    {"id": "step-1", "kind": "import", "note": "初始导入：仪器输出、样品质量、扫描速率、气氛、温度标定与用户选定切线分别存档"},
+    {"id": "step-2", "kind": "mass-revision", "value": 8.61, "unit": "mg", "note": "参数修订：复称样品质量，所有归一化派生过期"},
+    {"id": "step-3", "kind": "tangent-change", "segment": "runA_heat.csv#HEAT#1", "pair": "pair-melt", "side": "left", "tLo": 205.0, "tHi": 212.0, "note": "只影响局部依赖的源数据改动：移动熔融峰左切线区间"},
+    {"id": "step-4", "kind": "conflicting-decision", "transition": "runA_heat.csv#HEAT#1#T3", "authorA": "reviewer-lin", "candA": "linear-chord", "authorB": "reviewer-gu", "candB": "area-sigmoid", "note": "互相冲突的人工决定：两位审阅者从同一版本采纳不同基线候选"},
+    {"id": "step-5", "kind": "empty-interval", "segment": "runD_nonuniform.csv#HEAT#1", "tLo": 210.0, "tHi": 220.0, "note": "空区间检验：在数据范围之外选择切线区间，必须被拒绝并留下诊断"}
+  ]
+}
