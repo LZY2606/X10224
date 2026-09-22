@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>热转折案 · DSC 审阅器</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="title">
+    <h1>热转折案：DSC 基线、相变积分与扫描历史审阅器</h1>
+    <div class="sub" id="historyName"></div>
+  </div>
+  <div class="toolbar">
+    <label>重放视角
+      <select id="timeSelect"><option value="">最新（head）</option></select>
+    </label>
+    <button id="btnExport">导出档案</button>
+    <button id="btnTour" class="primary">▶ 90 秒样例导览</button>
+  </div>
+</header>
+
+<div id="tourBar" class="tour-bar hidden">
+  <div><b id="tourStep"></b><span id="tourText"></span></div>
+  <div class="tour-controls">
+    <button id="tourPrev">上一步</button>
+    <button id="tourNext">下一步</button>
+    <button id="tourStop">退出导览</button>
+  </div>
+</div>
+
+<nav class="tabs">
+  <button data-tab="curve" class="active">曲线页</button>
+  <button data-tab="sources">来源归档</button>
+  <button data-tab="baselines">基线候选</button>
+  <button data-tab="events">事件 / 时间旅行</button>
+  <button data-tab="anomalies">异常与判定</button>
+</nav>
+
+<main>
+  <section id="tab-curve" class="tab active">
+    <div class="curve-layout">
+      <div class="curve-panel">
+        <div class="curve-controls">
+          <label>段
+            <select id="segmentSelect"></select>
+          </label>
+          <label>区间
+            <select id="regionSelect"></select>
+          </label>
+          <span id="segmentMeta" class="meta"></span>
+        </div>
+        <svg id="chart" viewBox="0 0 900 460" preserveAspectRatio="xMidYMid meet"></svg>
+        <p class="hint">拖动两侧手柄调整区间 → 选择切线 → 触发重算；基线候选并排显示。
+          吸放热方向只取仪器约定，文件名不参与判定。</p>
+        <div class="curve-actions">
+          <button id="btnAdjustTangent">按当前手柄更新切线并重算</button>
+          <button id="btnRecompute">仅重算本区间</button>
+        </div>
+      </div>
+      <aside class="side-panel">
+        <h3>onset / peak / endset 与焓变</h3>
+        <div id="featureCards"></div>
+        <h3>焓变误差来源</h3>
+        <div id="errorBudget"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="tab-sources" class="tab">
+    <div id="sourcesView"></div>
+  </section>
+
+  <section id="tab-baselines" class="tab">
+    <div class="compare-bar">
+      <label>比较基线 A <select id="cmpA"></select></label>
+      <label>比较基线 B <select id="cmpB"></select></label>
+    </div>
+    <div id="baselineCompare" class="compare"></div>
+    <div id="baselineList"></div>
+  </section>
+
+  <section id="tab-events" class="tab">
+    <div id="eventsView"></div>
+  </section>
+
+  <section id="tab-anomalies" class="tab">
+    <div id="anomalyView"></div>
+  </section>
+</main>
+
+<div id="sourceChain" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" id="chainClose">×</button>
+    <h2>来源链</h2>
+    <pre id="chainContent"></pre>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
