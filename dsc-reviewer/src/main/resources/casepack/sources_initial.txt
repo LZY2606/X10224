@@ -1,0 +1,7 @@
+# 六个直接来源分别存档；原始表示保留，单位随值走
+MASS: 12.40 mg
+SCAN_RATE: 10 K/min
+ATMOSPHERE: N2, 50 mL/min
+TEMP_CALIBRATION: In melting 429.75 K (indicated 430.10 K)
+TANGENT_HEATING1: left=[300,340]K right=[510,520]K
+TANGENT_COOLING1: left=[490,515]K right=[305,330]K
