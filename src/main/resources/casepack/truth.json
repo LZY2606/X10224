@@ -1,0 +1,91 @@
+{
+  "segments": {
+    "cycle1_heating": {
+      "mode": "HEATING",
+      "rateKPerMin": 10.0,
+      "massMg": 12.4,
+      "glass": {
+        "TgC": 60.0,
+        "stepWg": 0.08
+      },
+      "melt": {
+        "TpC": 150.0,
+        "enthalpyJg": 45.0,
+        "widthK": 3.0,
+        "direction": "ENDOTHERMIC"
+      }
+    },
+    "cycle2_heating": {
+      "mode": "HEATING",
+      "rateKPerMin": 10.0,
+      "massMg": 12.1,
+      "melt": {
+        "TpC": 150.4,
+        "enthalpyJg": 46.2,
+        "widthK": 3.0,
+        "direction": "ENDOTHERMIC"
+      }
+    },
+    "cycle1_cooling": {
+      "mode": "COOLING",
+      "rateKPerMin": 10.0,
+      "massMg": 12.4,
+      "crystal": {
+        "TpC": 120.0,
+        "enthalpyJg": 38.0,
+        "widthK": 3.5,
+        "fileDirection": "positive(exo-up)",
+        "internalDirection": "EXOTHERMIC"
+      }
+    },
+    "nonuniform_heating": {
+      "mode": "HEATING",
+      "rateKPerMin": 10.0,
+      "massMg": 12.4,
+      "melt": {
+        "TpC": 130.0,
+        "enthalpyJg": 25.0,
+        "widthK": 2.5
+      },
+      "grid": "nonuniform"
+    },
+    "overlap_heating": {
+      "mode": "HEATING",
+      "rateKPerMin": 10.0,
+      "massMg": 12.4,
+      "peaks": [
+        {
+          "TpC": 155.0,
+          "enthalpyJg": 40.0,
+          "widthK": 3.0
+        },
+        {
+          "TpC": 163.0,
+          "enthalpyJg": 12.0,
+          "widthK": 2.2
+        }
+      ],
+      "combinedEnthalpyJg": 52.0
+    },
+    "mystery_heating": {
+      "mode": "HEATING",
+      "rateKPerMin": 10.0,
+      "massMg": 12.4,
+      "peak": {
+        "TpC": 140.0,
+        "magnitudeJg": 30.0
+      },
+      "direction": "UNRESOLVED"
+    },
+    "cycle1_heating_mW": {
+      "mode": "HEATING",
+      "rateKPerMin": 10.0,
+      "massMg": 12.4,
+      "melt": {
+        "TpC": 150.0,
+        "enthalpyJg": 45.0
+      },
+      "badRowIndex": 200
+    }
+  }
+}
