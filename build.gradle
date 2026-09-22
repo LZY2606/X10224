@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+}
+
+group = 'org.materials'
+version = '2.0.0'
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation 'io.javalin:javalin:6.3.0'
+    implementation 'org.xerial:sqlite-jdbc:3.47.2.0'
+    implementation 'org.slf4j:slf4j-simple:2.0.17'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params'
+}
+
+application {
+    mainClass = 'dsc.Main'
+}
+
+tasks.named('test') { useJUnitPlatform() }
+
+run {
+    if (project.hasProperty('appArgs')) {
+        args project.appArgs.split(' ')
+    }
+}
