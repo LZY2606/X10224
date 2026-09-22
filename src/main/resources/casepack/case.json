@@ -1,0 +1,47 @@
+{
+  "caseId": "dsc-thermal-turning-2026",
+  "title": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+  "narrative": "材料组将 PET-2026-0417 的加热与冷却 DSC 序列放入同一样品履历，为玻璃化、结晶与熔融事件建立可重算的基线与积分。初始版本完整存档仪器输出、样品质量、扫描速率、气氛、温度标定与用户切线；随后安排一次参数修订、一次只影响局部依赖的源数据改动和一次互相冲突的人工决定。",
+  "sample": { "id": "PET-2026-0417", "name": "PET 粒料 批次 2026-0417" },
+  "runs": [
+    { "instrumentOutputId": "io-run1", "file": "run1.csv", "note": "三段循环：加热/冷却/再加热；冷却段非等间隔采样；第三段含重叠结晶峰" },
+    { "instrumentOutputId": "io-run2", "file": "run2_reversed.csv", "note": "热流通道接反：声明 ENDO_UP 但熔融峰朝下" },
+    { "instrumentOutputId": "io-run3", "file": "run3_cooling_trap.csv", "note": "文件名写 cooling，头部声明 HEATING + ENDO_DOWN；方向只能信头部" }
+  ],
+  "massVersions": [
+    { "id": "mass-v1", "value": 9.84, "unit": "mg", "revision": 1, "uncertainty": 0.02 }
+  ],
+  "calibrations": [
+    { "id": "cal-in-sn-v1", "instrumentOutputId": "io-run1", "tempOffset": 0.12, "tempSlope": 1.0004, "enthalpyFactor": 1.000, "reference": "In/Sn 两点标定", "revision": 1 },
+    { "id": "cal-in-sn-v1-r2", "instrumentOutputId": "io-run2", "tempOffset": 0.12, "tempSlope": 1.0004, "enthalpyFactor": 1.000, "reference": "In/Sn 两点标定", "revision": 1 },
+    { "id": "cal-in-sn-v1-r3", "instrumentOutputId": "io-run3", "tempOffset": 0.12, "tempSlope": 1.0004, "enthalpyFactor": 1.000, "reference": "In/Sn 两点标定", "revision": 1 }
+  ],
+  "tangentSelections": [
+    { "id": "tan-glass-left", "segment": "run-1-seg-1", "side": "LEFT", "anchorTemp": 66.0, "slope": 0.0042, "intercept": 0.231, "selectedBy": "reviewer-A" },
+    { "id": "tan-glass-right", "segment": "run-1-seg-1", "side": "RIGHT", "anchorTemp": 86.0, "slope": 0.0046, "intercept": 0.512, "selectedBy": "reviewer-A" }
+  ],
+  "initialEvents": [
+    { "id": "ev-glass",      "segment": "run-1-seg-1", "kind": "GLASS",           "t1": 70.0,  "t2": 82.0,  "actor": "reviewer-A" },
+    { "id": "ev-cryst",      "segment": "run-1-seg-1", "kind": "CRYSTALLIZATION", "t1": 118.0, "t2": 142.0, "actor": "reviewer-A" },
+    { "id": "ev-melt",       "segment": "run-1-seg-1", "kind": "MELTING",         "t1": 240.0, "t2": 258.0, "actor": "reviewer-A" },
+    { "id": "ev-cool-cryst", "segment": "run-1-seg-2", "kind": "CRYSTALLIZATION", "t1": 200.0, "t2": 180.0, "actor": "reviewer-A" },
+    { "id": "ev-ov-1",       "segment": "run-1-seg-3", "kind": "CRYSTALLIZATION", "t1": 122.0, "t2": 138.0, "actor": "reviewer-A" },
+    { "id": "ev-ov-2",       "segment": "run-1-seg-3", "kind": "CRYSTALLIZATION", "t1": 134.0, "t2": 150.0, "actor": "reviewer-A" },
+    { "id": "ev-empty",      "segment": "run-1-seg-1", "kind": "MELTING",         "t1": 100.0, "t2": 100.0, "actor": "reviewer-A" },
+    { "id": "ev-rev",        "segment": "run-2-seg-1", "kind": "MELTING",         "t1": 240.0, "t2": 258.0, "actor": "reviewer-A" },
+    { "id": "ev-trap",       "segment": "run-3-seg-1", "kind": "MELTING",         "t1": 238.0, "t2": 256.0, "actor": "reviewer-A" }
+  ],
+  "script": [
+    { "step": "adjust-interval", "event": "ev-glass", "t1": 68.0, "t2": 84.0, "actor": "reviewer-A",
+      "note": "参数修订：审阅者拖动玻璃化区间，派生重算" },
+    { "step": "revise-calibration", "calibration": "cal-in-sn-v1", "enthalpyFactor": 0.997, "actor": "reviewer-A",
+      "note": "局部源数据改动：只应使 run-1 的积分过期，run-2/run-3 不受影响" },
+    { "step": "accept-baseline", "candidate": "bc-ev-glass-sigmoidal", "actor": "reviewer-A",
+      "note": "审阅者 A 采纳 sigmoid 基线" },
+    { "step": "accept-baseline", "candidate": "bc-ev-glass-linear", "actor": "reviewer-B", "staleBase": true,
+      "expectConflict": true, "resolve": "bc-ev-glass-linear",
+      "note": "审阅者 B 基于同一旧版本采纳 linear 基线：冲突可解决，两个候选都保留" },
+    { "step": "revise-mass", "sample": "PET-2026-0417", "value": 9.61, "actor": "reviewer-B",
+      "note": "质量版本变更：所有归一化派生（J/g）过期并按依赖图重算" }
+  ]
+}
