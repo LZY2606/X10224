@@ -1,0 +1,24 @@
+{
+  "pack": "thermal-transition-casepack",
+  "title": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+  "sample": {"id": "SMP-PLA-0426", "name": "PLA 粒料批次 0426（玻璃化/冷结晶/熔融）"},
+  "sources": [
+    {"file": "run1_heating_cycle1.csv", "kind": "instrument_output", "note": "endo-up, 非等间隔温度, Tg+冷结晶+熔融(重叠), 200-210°C 空区间, 一个 OVERLOAD 单元"},
+    {"file": "run2_cooling_ENDO.csv", "kind": "instrument_output", "note": "反向热流: 元数据 exo-up, 文件名谎称 ENDO —— 方向只信元数据"},
+    {"file": "run3_heating_cycle2.csv", "kind": "instrument_output", "note": "循环段切换: 第二次加热"},
+    {"file": "run4_heating_cycle3_noconv.csv", "kind": "instrument_output", "note": "缺少热流方向元数据 —— 方向不可唯一决定, 保留全部候选"},
+    {"file": "mass_v1.json", "kind": "mass"},
+    {"file": "scan_rate.json", "kind": "scan_rate"},
+    {"file": "atmosphere.json", "kind": "atmosphere"},
+    {"file": "temp_calibration.json", "kind": "temp_calibration", "note": "含 rankine 原始条目 —— 无法转换, 原地保留并附诊断"},
+    {"file": "tangents_user.json", "kind": "tangents"}
+  ],
+  "replay": [
+    "load: 分别存档全部来源并初始推导",
+    "boundary: 反向热流 / 非等间隔温度 / 重叠转折 / 循环段切换 / 并列基线 / 空区间",
+    "param-revision: scan_rate 10 -> 20 K/min, 仅积分派生过期",
+    "source-change: mass 5.20 -> 5.05 mg, 全部归一化派生过期",
+    "decision: run4 方向裁定 (endo-up)",
+    "conflict: 两位审阅者从同一版本采纳不同基线 -> 冲突 -> 解决, 未选分支保留"
+  ]
+}

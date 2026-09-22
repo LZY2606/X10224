@@ -1,0 +1,7 @@
+{
+  "kind": "mass",
+  "value": 5.20,
+  "unit": "mg",
+  "uncertainty": {"value": 0.02, "unit": "mg"},
+  "raw": "5.20 mg (balance AX-105, 2026-09-10)"
+}

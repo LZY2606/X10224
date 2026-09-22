@@ -1,0 +1,9 @@
+{
+  "kind": "tangents",
+  "basis": {"y": "W/g", "x": "°C", "heatFlow": "endo-up"},
+  "appliesTo": {"segmentDirection": "heating", "transitionType": "glass"},
+  "left":  {"slope": 0.000385, "intercept": 0.08465},
+  "right": {"slope": 0.000385, "intercept": 0.14235},
+  "selectedBy": "reviewer-chen",
+  "raw": "Tg tangents picked on normalized heating curve, cycle 1"
+}

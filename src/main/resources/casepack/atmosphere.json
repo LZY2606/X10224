@@ -1,0 +1,6 @@
+{
+  "kind": "atmosphere",
+  "gas": "N2",
+  "flow": {"value": 50, "unit": "mL/min"},
+  "raw": "N2 50 mL/min"
+}

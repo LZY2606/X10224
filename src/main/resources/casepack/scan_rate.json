@@ -1,0 +1,6 @@
+{
+  "kind": "scan_rate",
+  "value": 10.0,
+  "unit": "K/min",
+  "raw": "10.0 K/min (reviewed, matches program)"
+}

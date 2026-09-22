@@ -1,0 +1,10 @@
+{
+  "kind": "temp_calibration",
+  "offset": {"value": 0.3, "unit": "°C"},
+  "slope": 1.0002,
+  "uncertainty": {"value": 0.5, "unit": "°C"},
+  "referencePoints": [
+    {"material": "indium", "expected": {"value": 156.6, "unit": "°C"}, "observed": {"value": 156.3, "unit": "°C"}},
+    {"material": "archive-check", "raw": "99.9 rankine"}
+  ]
+}
