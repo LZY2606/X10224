@@ -1,0 +1,14 @@
+{"name": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+ "steps": [
+  {"id": "s1-import", "action": "import-all",
+   "expect": "instrument output, mass, scan rate, atmosphere, calibration and user tangents stored separately"},
+  {"id": "s2-param-revision", "action": "revise-calibration", "offsetC": 0.5,
+   "expect": "parameter revision shifts every event interval; all integrations recomputed"},
+  {"id": "s3-local-source-change", "action": "revise-tangents",
+   "patch": {"ev-melt": {"tStart": 205.0, "tEnd": 240.0}},
+   "expect": "only ev-melt baselines/integration become stale; ev-tg and ev-cryst stay valid"},
+  {"id": "s4-conflicting-decisions", "action": "conflict",
+   "expect": "reviewer A keeps TANGENT baseline for ev-melt, reviewer B prefers SIGMOIDAL; both kept, branch OPEN"},
+  {"id": "s5-mass-revision", "action": "revise-mass", "valueMg": 10.61,
+   "expect": "every mass-normalized derivation marked stale and recomputed against mass v2"}
+ ]}

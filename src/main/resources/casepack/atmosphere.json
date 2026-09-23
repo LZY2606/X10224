@@ -1,0 +1,2 @@
+{"id": "run-1", "gas": "N2", "purity": "99.999%", "flowMlPerMin": 50.0, "unit": "mL/min",
+ "raw": "N2 50 ml/min as read from MFC channel A"}

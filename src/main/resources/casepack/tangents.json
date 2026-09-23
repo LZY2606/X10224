@@ -1,0 +1,13 @@
+{"id": "user-1", "selectedBy": "reviewer-A",
+ "events": [
+  {"id": "ev-tg",   "type": "GLASS_TRANSITION", "segment": 0, "tStart": 60.0,  "tEnd": 100.0,
+   "note": "step around 80 C, tangent pair chosen by reviewer"},
+  {"id": "ev-cryst","type": "CRYSTALLIZATION",  "segment": 0, "tStart": 120.0, "tEnd": 162.0,
+   "note": "cold crystallization exo peak"},
+  {"id": "ev-melt", "type": "MELTING",          "segment": 0, "tStart": 200.0, "tEnd": 245.0,
+   "note": "melting with overlapping shoulder near 231 C"},
+  {"id": "ev-cool-cryst", "type": "CRYSTALLIZATION", "segment": 1, "tStart": 150.0, "tEnd": 205.0,
+   "note": "cooling-segment crystallization; never mixed with heating events"},
+  {"id": "ev-empty","type": "MELTING",          "segment": 0, "tStart": 400.0, "tEnd": 450.0,
+   "note": "deliberately empty interval: no samples in range"}
+ ]}
