@@ -1,0 +1,3 @@
+# programmed scan rate for all segments of PET-flake-A
+sample_id: PET-flake-A
+rate: 10 K/min

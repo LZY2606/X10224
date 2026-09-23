@@ -1,0 +1,8 @@
+{
+  "sample_id": "PET-flake-A",
+  "tangents": [
+    {"event": "glass-heat1", "segment": "heating-1", "pre": [55.0, 60.0], "post": [74.0, 80.0], "note": "glass transition tangents"},
+    {"event": "melt-heat1", "segment": "heating-1", "pre": [150.0, 156.0], "post": [184.0, 190.0], "note": "melting tangents"},
+    {"event": "cryst-cool1", "segment": "cooling-1", "pre": [150.0, 146.0], "post": [128.0, 124.0], "note": "cooling crystallization tangents"}
+  ]
+}

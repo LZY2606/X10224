@@ -1,0 +1,4 @@
+# furnace atmosphere
+sample_id: PET-flake-A
+gas: N2
+flow: 50 mL/min

@@ -1,0 +1,4 @@
+# sample mass record, version 2 (re-weighed after pan reseal)
+sample_id: PET-flake-A
+mass: 12.31 mg
+tare: 1.2 gn

@@ -1,0 +1,6 @@
+# temperature calibration, indium + zinc two-point
+sample_id: PET-flake-A
+basis: ITS-90
+offset: +0.4 K
+slope: 1.0002
+uncertainty: 0.3 K
