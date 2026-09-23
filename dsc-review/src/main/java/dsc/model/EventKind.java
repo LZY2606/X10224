@@ -1,0 +1,21 @@
+package dsc.model;
+
+/** Machine-readable kinds of journal events. */
+public enum EventKind {
+    IMPORT_TRACE,
+    EDIT_MASS,
+    EDIT_SCAN_RATE,
+    EDIT_ATMOSPHERE,
+    EDIT_CALIBRATION,
+    SELECT_TANGENT,
+    SET_INTERVAL,
+    COMPUTE_BASELINES,
+    ADOPT_BASELINE,
+    REJECT_BASELINE,
+    ADJUST_BASELINE_PARAMS,
+    CLASSIFY_TRANSITION,
+    CONTINUE_BRANCH,
+    RESOLVE_CONFLICT,
+    RECOMPOTE_FLAG,
+    SYSTEM_NOTE
+}
