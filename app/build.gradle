@@ -1,0 +1,13 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'dsc.Main'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'dsc.Main'
+    }
+}
