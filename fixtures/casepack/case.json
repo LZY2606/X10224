@@ -1,0 +1,61 @@
+{
+  "caseId": "thermal-transition-case-01",
+  "title": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+  "sample": {
+    "id": "SMP-PA6-0417",
+    "name": "PA6 粒料批次 0417"
+  },
+  "mass": {
+    "value": 8.42,
+    "unit": "mg",
+    "uncertainty": 0.02
+  },
+  "massRevision": {
+    "value": 8.57,
+    "unit": "mg",
+    "uncertainty": 0.02,
+    "reason": "复称发现坩埚残留，修正样品净重"
+  },
+  "runs": [
+    {
+      "file": "run_heat.csv",
+      "role": "heating"
+    },
+    {
+      "file": "run_cool.csv",
+      "role": "cooling"
+    },
+    {
+      "file": "run_reverse.csv",
+      "role": "boundary:reverse-flow"
+    },
+    {
+      "file": "run_nonuniform.csv",
+      "role": "boundary:nonuniform-spacing"
+    },
+    {
+      "file": "run_overlap.csv",
+      "role": "boundary:overlapping-transitions"
+    },
+    {
+      "file": "run_cycles.csv",
+      "role": "boundary:cycle-switching"
+    },
+    {
+      "file": "run_flat.csv",
+      "role": "boundary:empty-interval"
+    }
+  ],
+  "calibration": {
+    "id": "CAL-2026-01",
+    "offsetC": 0.31,
+    "slope": 1.0004,
+    "reference": "In/Sn 熔点标定 2026-01-12"
+  },
+  "narrative": [
+    "初始导入：仪器输出、样品质量、扫描速率、气氛、温度标定与用户切线分别存档",
+    "参数修订：审阅者调整熔融峰切线（onset/endset 区间）",
+    "局部源数据改动：温度标定更新，仅温度相关派生失效",
+    "冲突决定：两位审阅者从同一版本接受不同基线候选"
+  ]
+}
