@@ -1,0 +1,108 @@
+{
+  "sample": {
+    "id": "smp-pet1042",
+    "name": "PET-1042 thermal history sample"
+  },
+  "description": "Heat/cool/heat DSC history: glass transition, crystallization and melting with recomputable baselines and integrations.",
+  "steps": [
+    {
+      "n": 1,
+      "type": "importPrimary",
+      "file": "instrument_output_v1.txt",
+      "kind": "INSTRUMENT_OUTPUT",
+      "note": "initial import: three cycle segments, non-uniform temperature grid"
+    },
+    {
+      "n": 2,
+      "type": "import",
+      "file": "mass_v1.txt",
+      "kind": "SAMPLE_MASS",
+      "note": "sample mass archived separately"
+    },
+    {
+      "n": 3,
+      "type": "import",
+      "file": "scan_rate.txt",
+      "kind": "SCAN_RATE"
+    },
+    {
+      "n": 4,
+      "type": "import",
+      "file": "atmosphere.txt",
+      "kind": "ATMOSPHERE"
+    },
+    {
+      "n": 5,
+      "type": "import",
+      "file": "temp_calibration_v1.txt",
+      "kind": "TEMP_CALIBRATION"
+    },
+    {
+      "n": 6,
+      "type": "import",
+      "file": "tangents_v1.json",
+      "kind": "TANGENT_SELECTION",
+      "note": "user-selected tangents archived separately from instrument output"
+    },
+    {
+      "n": 7,
+      "type": "derive",
+      "note": "full pipeline: segmentation, normalization, detection, parallel baselines, integrations"
+    },
+    {
+      "n": 8,
+      "type": "attempt",
+      "action": "integrateEmpty",
+      "segmentKey": "s1",
+      "from": 200.0,
+      "to": 210.0,
+      "note": "empty interval beyond scan range must be rejected with a diagnostic"
+    },
+    {
+      "n": 9,
+      "type": "importSecondary",
+      "file": "instrument_output_reversed.txt",
+      "kind": "INSTRUMENT_OUTPUT",
+      "note": "reversed heat flow export (ExoUp); endo/exo classification must agree with v1"
+    },
+    {
+      "n": 10,
+      "type": "import",
+      "file": "tangents_v2.json",
+      "kind": "TANGENT_SELECTION",
+      "note": "parameter revision: only seg1 peak2 tangent changes"
+    },
+    {
+      "n": 11,
+      "type": "import",
+      "file": "mass_v2.txt",
+      "kind": "SAMPLE_MASS",
+      "note": "mass revision: every normalized derivation becomes stale and recomputes"
+    },
+    {
+      "n": 12,
+      "type": "decide",
+      "reviewer": "reviewer-A",
+      "segmentKey": "s1",
+      "transition": "peak2",
+      "accept": "TANGENT",
+      "note": "reviewer A accepts the tangent baseline"
+    },
+    {
+      "n": 13,
+      "type": "decide",
+      "reviewer": "reviewer-B",
+      "segmentKey": "s1",
+      "transition": "peak2",
+      "accept": "LINEAR",
+      "fromSameBase": true,
+      "note": "reviewer B edits from the same pre-A version: conflict must be recorded"
+    },
+    {
+      "n": 14,
+      "type": "resolveConflict",
+      "keep": "reviewer-A",
+      "note": "resolve: continue A; the B candidate is retained, not overwritten"
+    }
+  ]
+}

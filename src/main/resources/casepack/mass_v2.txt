@@ -1,0 +1,7 @@
+# Sample mass record (revision)
+Sample: PET-1042
+Mass(mg): 5.42
+Uncertainty(mg): 0.02
+Balance: XP205 SN:331
+WeighedAt: 2026-09-12T10:05+09:00
+Note: re-weighed after pan re-seal; supersedes 5.10 mg

@@ -1,0 +1,44 @@
+{
+  "seg1": {
+    "glass1": {
+      "left": {
+        "t": 68.0,
+        "slope_mW_per_C": 0.002
+      },
+      "right": {
+        "t": 90.0,
+        "slope_mW_per_C": 0.002
+      }
+    },
+    "peak2": {
+      "left": {
+        "t": 152.0,
+        "slope_mW_per_C": -0.02
+      }
+    },
+    "peak3": {
+      "left": {
+        "t": 163.0,
+        "slope_mW_per_C": -0.02
+      }
+    }
+  },
+  "seg3": {
+    "glass1": {
+      "left": {
+        "t": 68.0,
+        "slope_mW_per_C": 0.002
+      },
+      "right": {
+        "t": 90.0,
+        "slope_mW_per_C": 0.002
+      }
+    },
+    "peak1": {
+      "left": {
+        "t": 154.0,
+        "slope_mW_per_C": -0.03
+      }
+    }
+  }
+}

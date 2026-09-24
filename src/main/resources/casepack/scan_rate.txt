@@ -1,0 +1,3 @@
+# Scan rate program
+Rate(K/min): 10.0
+AppliesTo: all segments

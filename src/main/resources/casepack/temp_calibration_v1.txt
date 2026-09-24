@@ -1,0 +1,6 @@
+# Temperature calibration record
+Standard: Indium
+CertifiedOnset(C): 156.6
+MeasuredOnset(C): 155.9
+Offset(C): +0.7
+Rule: calibrated_C = measured_C + offset
