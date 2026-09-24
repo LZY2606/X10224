@@ -1,0 +1,39 @@
+{
+  "title": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+  "sample_id": "PET-quench-042",
+  "narrative": "材料组把同一样品的加热与冷却 DSC 序列放进同一份履历，为玻璃化、结晶与熔融事件建立可重算的基线与积分。",
+  "segments": [
+    {"file": "run1_heating.csv", "direction": "HEATING", "cycle": 1},
+    {"file": "run1_cooling.csv", "direction": "COOLING", "cycle": 1},
+    {"file": "run2_heating_nonuniform.csv", "direction": "HEATING", "cycle": 2},
+    {"file": "run3_heating_reversed_signal.csv", "direction": "HEATING", "cycle": 3},
+    {"file": "run4_heating_overlapping.csv", "direction": "HEATING", "cycle": 4},
+    {"file": "run5_cycles.csv", "direction": "MIXED", "cycle": 5}
+  ],
+  "archives": {
+    "mass": ["mass_v1.json", "mass_v2.json"],
+    "scan_rate": "scan_rate.json",
+    "atmosphere": "atmosphere.json",
+    "calibration": "calibration.json",
+    "user_tangent": "tangents_user.json",
+    "mass_unconvertible": "mass_unconvertible.txt"
+  },
+  "events_of_interest": {
+    "glass_C": [60.0, 85.0],
+    "crystallization_C": [100.0, 130.0],
+    "melting_C": [138.0, 165.0],
+    "empty_C": [200.0, 220.0]
+  },
+  "replay_script": [
+    "import_all",
+    "edge_reverse_heatflow",
+    "edge_nonuniform_spacing",
+    "edge_overlapping_transitions",
+    "edge_cycle_switching",
+    "edge_mass_revision",
+    "edge_parallel_baselines",
+    "edge_empty_interval",
+    "local_tangent_change",
+    "conflicting_decisions"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "event": "glass",
+  "segment_file": "run1_heating.csv",
+  "pre_tangent_C":  [58.0, 64.0],
+  "post_tangent_C": [76.0, 82.0],
+  "note": "reviewer A, tangent anchors on Cp step"
+}
