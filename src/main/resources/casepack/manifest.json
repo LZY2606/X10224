@@ -1,0 +1,99 @@
+{
+  "caseId": "thermal-transition-case",
+  "title": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+  "schemaVersion": 1,
+  "sample": {
+    "sampleId": "sample-PET-042",
+    "material": "PET 颗粒（材料组内部批次 042）",
+    "pan": "铝坩埚 T-Zero"
+  },
+  "segments": [
+    {
+      "segmentId": "seg1",
+      "file": "segments/seg1_heating.csv",
+      "cycle": 1,
+      "programDirection": "HEATING",
+      "declaredSign": "EXO_POSITIVE",
+      "rate": {"value": "10", "unit": "K/min"},
+      "atmosphere": {"gas": "N2", "flowRaw": "50", "flowUnit": "mL/min"},
+      "expected": ["玻璃化 ~55°C", "熔融峰 ~95°C（文件中因 EXO_POSITIVE 呈负向）"]
+    },
+    {
+      "segmentId": "seg2",
+      "file": "segments/seg2_cooling.csv",
+      "cycle": 1,
+      "programDirection": "COOLING",
+      "declaredSign": "ENDO_POSITIVE",
+      "rate": {"value": "-10", "unit": "K/min"},
+      "atmosphere": {"gas": "N2", "flowRaw": "50", "flowUnit": "mL/min"},
+      "expected": ["结晶峰 ~78°C（冷却段，禁止与升温段混用）"]
+    },
+    {
+      "segmentId": "seg3",
+      "file": "segments/seg3_heating_overlap.csv",
+      "cycle": 2,
+      "programDirection": "HEATING",
+      "declaredSign": "ENDO_POSITIVE",
+      "rate": {"value": "10", "unit": "K/min"},
+      "atmosphere": {"gas": "N2", "flowRaw": "50", "flowUnit": "mL/min"},
+      "expected": ["重叠峰 ~88°C / ~96°C", "非等间隔温度网格", "92°C 处 OVERLOAD 无法换算点保留"]
+    }
+  ],
+  "sources": [
+    {"id": "mass-sample-PET-042", "kind": "SAMPLE_MASS", "refId": "sample-PET-042", "version": 1,
+     "originalRep": "称量单 #B-042 手写：8.42 mg", "value": "8.42", "unit": "mg"},
+    {"id": "calib-thermocouple-T1", "kind": "TEMPERATURE_CAL", "refId": "sample-PET-042", "version": 1,
+     "originalRep": "标定证书 CAL-2026-03：offset=-0.15°C slope=1.000 (indium/锡两点)",
+     "offsetC": "-0.15", "slope": "1.000",
+     "offsetUncertaintyK": 0.3, "slopeUncertainty": 0.002, "massRelUncertainty": 0.002},
+    {"id": "tangent-seg1-glass", "kind": "USER_TANGENT", "refId": "seg1#interval-glass", "version": 1,
+     "originalRep": "审阅者在曲线页拖选 46-68°C 后取玻璃化前后平台切线：(46°C, 0.21mW) (68°C, -3.85mW)",
+     "t0C": "46", "y0mW": "0.21", "t1C": "68", "y1mW": "-3.85"},
+    {"id": "tangent-seg1-melt", "kind": "USER_TANGENT", "refId": "seg1#interval-melt", "version": 1,
+     "originalRep": "审阅者对熔融区间取外缘切线：(88°C, -4.6mW) (103°C, -4.9mW)",
+     "t0C": "88", "y0mW": "-4.60", "t1C": "103", "y1mW": "-4.90"}
+  ],
+  "initialIntervals": [
+    {"intervalId": "interval-glass", "segmentId": "seg1", "t0C": 46.0, "t1C": 68.0,
+     "transitionId": "tr-glass", "hint": "GLASS_TRANSITION"},
+    {"intervalId": "interval-melt", "segmentId": "seg1", "t0C": 87.0, "t1C": 104.0,
+     "transitionId": "tr-melt", "hint": "MELTING"},
+    {"intervalId": "interval-cryst", "segmentId": "seg2", "t0C": 70.0, "t1C": 86.0,
+     "transitionId": "tr-cryst", "hint": "CRYSTALLIZATION"},
+    {"intervalId": "interval-overlap", "segmentId": "seg3", "t0C": 80.0, "t1C": 104.0,
+     "transitionId": "tr-overlap", "hint": "OVERLAP"}
+  ],
+  "beats": [
+    {"beat": 1, "name": "initial-import",
+     "description": "初始导入：六类来源分别存档，建立 v1 归一化/基线/积分"},
+    {"beat": 2, "name": "parameter-revision",
+     "description": "参数修订：规则 v1->v2，重叠分离阈值 8K->6K，只影响重叠区间基线",
+     "ruleVersion": "rules-v2"},
+    {"beat": 3, "name": "mass-revision",
+     "description": "质量修订：8.42mg -> 8.37mg（称量复核），所有归一化派生整体过期重算",
+     "sourceId": "mass-sample-PET-042", "value": "8.37", "unit": "mg",
+     "originalRep": "复核称量单 #B-042R：8.37 mg"},
+    {"beat": 4, "name": "local-source-change",
+     "description": "局部源数据改动：seg2 气氛流量 50->45 mL/min，影响限制在 seg2",
+     "kind": "ATMOSPHERE", "refId": "seg2", "flowRaw": "45"},
+    {"beat": 5, "name": "conflicting-decision",
+     "description": "互相冲突的人工决定：两位审阅者在同一修订版本分别接受 seg1 熔融的切线基线与 sigmoid 基线",
+     "intervalId": "interval-melt"}
+  ],
+  "edgeCases": [
+    {"code": "REVERSE_HEAT_FLOW", "where": "seg1",
+     "expect": "文件内熔融为负向（EXO_POSITIVE），规范化后转为 ENDO_UP 正向；方向只读仪器表头不读文件名"},
+    {"code": "NON_UNIFORM_TEMPERATURE", "where": "seg3",
+     "expect": "ΔT 在 0.4/0.5/0.7K 间变化，梯形积分逐点取实际 ΔT"},
+    {"code": "OVERLAPPING_TRANSITIONS", "where": "seg3",
+     "expect": "并列产生 TANGENT 与 PIECEWISE_OVERLAP 基线，多解保留"},
+    {"code": "CYCLE_SEGMENT_SWITCH", "where": "seg1/seg2/seg3",
+     "expect": "加热段与冷却段、循环 1 与循环 2 分离，禁止跨段区间积分"},
+    {"code": "MASS_VERSION_CHANGE", "where": "beat-3",
+     "expect": "质量新版本使三段全部归一化及其下游过期，旧版本保留可回溯"},
+    {"code": "PARALLEL_BASELINES", "where": "interval-melt/interval-overlap",
+     "expect": "多个合理基线并列，选择其一不删除其余"},
+    {"code": "EMPTY_INTERVAL", "where": "UI 拖动至无点区域",
+     "expect": "返回 EMPTY_INTERVAL INVALID，不编造基线与焓变"}
+  ]
+}

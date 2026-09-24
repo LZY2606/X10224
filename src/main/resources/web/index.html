@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>热转折案 · DSC 基线 / 相变 / 扫描历史审阅器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="title">
+    <h1>热转折案：DSC 基线、相变积分与扫描历史审阅器</h1>
+    <div class="meta" id="caseMeta">加载中…</div>
+  </div>
+  <div class="toolbar">
+    <button id="btnRule">参数修订 v1→v2</button>
+    <button id="btnMass">质量修订 8.42→8.37 mg</button>
+    <button id="btnLocal">局部改动 seg2 气氛</button>
+    <button id="btnConflict">制造并发冲突决定</button>
+    <button id="btnReplay" class="primary">一键重放全部节拍</button>
+    <button id="btnExport">导出快照</button>
+    <button id="btnImportCycle" title="导出→删除本地库→重新导入并校验身份/顺序">导出·删库·导入校验</button>
+    <label class="filebtn">从快照导入（删库）
+      <input type="file" id="fileImport" accept="application/json" hidden>
+    </label>
+    <button id="btnReseed">重置为初始案例</button>
+  </div>
+</header>
+
+<main>
+  <aside class="col left">
+    <section>
+      <h2>样品履历（加热/冷却段不混用）</h2>
+      <div id="segmentList"></div>
+    </section>
+    <section>
+      <h2>区间（可在曲线页拖动）</h2>
+      <div id="intervalList"></div>
+      <button id="btnEmpty" class="ghost">空区间探针：把当前区间拖到 120–121K</button>
+    </section>
+    <section>
+      <h2>六类来源（分别存档）</h2>
+      <div id="sourceList" class="sources"></div>
+    </section>
+  </aside>
+
+  <section class="col center">
+    <div id="asofBanner" class="asof hidden">
+      <span id="asofText"></span>
+      <button id="btnBackNow" class="ghost">回到当前版本</button>
+    </div>
+    <div class="charthead">
+      <div id="chartTitle">选择左侧段</div>
+      <div class="hint">拖动两条把手移动区间，松开后提交并重算；每个读回值标注稳定身份。</div>
+    </div>
+    <svg id="chart" viewBox="0 0 860 420"></svg>
+    <div id="tour" class="tour">
+      <b>九十秒导览：</b>
+      <span class="step" data-i="0">① 查看六类来源</span>
+      <span class="step" data-i="1">② 选 seg1，看反向热流被规范为吸热向上</span>
+      <span class="step" data-i="2">③ 一键重放全部节拍</span>
+      <span class="step" data-i="3">④ 选熔融区间，拖把手/读 onset·peak·endset</span>
+      <span class="step" data-i="4">⑤ 并排比较基线并接受其一</span>
+      <span class="step" data-i="5">⑥ 点事件时间线回到旧版本</span>
+    </div>
+  </section>
+
+  <aside class="col right">
+    <section>
+      <h2>并列基线候选</h2>
+      <div id="candidateList"></div>
+    </section>
+    <section>
+      <h2>相变积分与焓变误差来源</h2>
+      <div id="integrationPanel"></div>
+    </section>
+    <section>
+      <h2>异常点 → 来源链</h2>
+      <div id="diagPanel"></div>
+    </section>
+  </aside>
+</main>
+
+<section class="timeline">
+  <h2>事件时间线（机器可读 · 只追加 · 点击恢复当时依赖版本与结论）</h2>
+  <div id="eventList"></div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
