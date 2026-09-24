@@ -1,0 +1,17 @@
+{
+  "judgmentRules": [
+    "heat-flow-direction", "non-uniform-spacing", "overlapping-transitions",
+    "segment-mixing", "empty-interval", "mass-revision", "parallel-baselines"
+  ],
+  "undeterminedDirectionCurves": ["curve-heat2"],
+  "filenameHintIgnored": "curve-heat2",
+  "nonUniformCurves": ["curve-heat1", "curve-cool1"],
+  "overlappingEventPairs": [["evt-x1", "evt-m2"]],
+  "emptyDerivedPrefix": "der:onset:evt-empty:",
+  "staleAfterMassRevisionKind": "ENTHALPY_NORMALIZED",
+  "sourceChangeRecomputedCurve": "curve-heat2",
+  "sourceChangeUnaffectedCurves": ["curve-heat1", "curve-cool1"],
+  "conflict": {"losersRetained": true, "winningChoice": "theirs", "winningBaseline": "bl-x1-tan"},
+  "segmentMixRejectedEvent": "evt-m1",
+  "identityPreservedAcrossExportImport": true
+}

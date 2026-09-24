@@ -1,0 +1,16 @@
+{
+  "segments": [
+    {"id": "seg-heat1", "curveId": "curve-heat1", "kind": "HEATING", "rateKPerMin": 10.0, "atmosphere": "N2 50mL/min", "calibrationId": "cal-in117", "cycleIndex": 1},
+    {"id": "seg-cool1", "curveId": "curve-cool1", "kind": "COOLING", "rateKPerMin": 10.0, "atmosphere": "N2 50mL/min", "calibrationId": "cal-in117", "cycleIndex": 1},
+    {"id": "seg-heat2", "curveId": "curve-heat2", "kind": "HEATING", "rateKPerMin": 10.0, "atmosphere": "N2 50mL/min", "calibrationId": "cal-in117", "cycleIndex": 2}
+  ],
+  "events": [
+    {"id": "evt-g1", "segmentId": "seg-heat1", "type": "GLASS_TRANSITION", "tStart": 55.0, "tEnd": 75.0},
+    {"id": "evt-c1", "segmentId": "seg-heat1", "type": "CRYSTALLIZATION", "tStart": 100.0, "tEnd": 125.0},
+    {"id": "evt-m1", "segmentId": "seg-heat1", "type": "MELTING", "tStart": 140.0, "tEnd": 165.0},
+    {"id": "evt-k1", "segmentId": "seg-cool1", "type": "CRYSTALLIZATION", "tStart": 106.0, "tEnd": 132.0},
+    {"id": "evt-x1", "segmentId": "seg-heat2", "type": "CRYSTALLIZATION", "tStart": 124.0, "tEnd": 146.0},
+    {"id": "evt-m2", "segmentId": "seg-heat2", "type": "MELTING", "tStart": 141.0, "tEnd": 163.0},
+    {"id": "evt-empty", "segmentId": "seg-heat2", "type": "GLASS_TRANSITION", "tStart": 81.0, "tEnd": 89.0}
+  ]
+}

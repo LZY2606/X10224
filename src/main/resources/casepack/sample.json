@@ -1,0 +1,8 @@
+{
+  "sampleId": "sample-A",
+  "material": "PET bottle-grade pellets, quenched",
+  "massVersions": [
+    {"id": "mass-v1", "mg": 10.24, "note": "as-weighed before cycle 1", "ts": 1758000000000},
+    {"id": "mass-v2", "mg": 9.87,  "note": "re-weighed after pan reseal; invalidates all normalized derivations", "ts": 1758003600000}
+  ]
+}

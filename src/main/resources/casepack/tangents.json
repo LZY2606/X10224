@@ -1,0 +1,16 @@
+{
+  "tangents": [
+    {"id": "tan-g1-left",  "eventId": "evt-g1", "author": "chen", "side": "left",  "t1": 50.0, "t2": 56.0},
+    {"id": "tan-g1-right", "eventId": "evt-g1", "author": "chen", "side": "right", "t1": 74.0, "t2": 79.0},
+    {"id": "tan-c1-left",  "eventId": "evt-c1", "author": "chen", "side": "left",  "t1": 98.0, "t2": 101.0},
+    {"id": "tan-c1-right", "eventId": "evt-c1", "author": "chen", "side": "right", "t1": 123.0, "t2": 127.0},
+    {"id": "tan-m1-left",  "eventId": "evt-m1", "author": "chen", "side": "left",  "t1": 139.0, "t2": 142.0},
+    {"id": "tan-m1-right", "eventId": "evt-m1", "author": "chen", "side": "right", "t1": 163.0, "t2": 167.0},
+    {"id": "tan-k1-left",  "eventId": "evt-k1", "author": "chen", "side": "left",  "t1": 104.0, "t2": 108.0},
+    {"id": "tan-k1-right", "eventId": "evt-k1", "author": "chen", "side": "right", "t1": 130.0, "t2": 134.0},
+    {"id": "tan-x1-left",  "eventId": "evt-x1", "author": "chen", "side": "left",  "t1": 122.0, "t2": 125.0},
+    {"id": "tan-x1-right", "eventId": "evt-x1", "author": "chen", "side": "right", "t1": 144.0, "t2": 146.0},
+    {"id": "tan-m2-left",  "eventId": "evt-m2", "author": "chen", "side": "left",  "t1": 140.0, "t2": 142.5},
+    {"id": "tan-m2-right", "eventId": "evt-m2", "author": "chen", "side": "right", "t1": 161.0, "t2": 164.0}
+  ]
+}

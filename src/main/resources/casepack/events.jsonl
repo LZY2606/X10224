@@ -1,0 +1,8 @@
+{"seq": 1, "actor": "li", "kind": "revise-mass", "params": {"massId": "mass-v2", "mg": 9.87, "note": "re-weighed after pan reseal"}, "narrative": "参数修订：质量版本变更，所有归一化派生过期"}
+{"seq": 2, "actor": "system", "kind": "source-change", "params": {"curveId": "curve-heat2", "file": "heat2b.csv"}, "narrative": "只影响局部依赖的源数据改动：第二升温段高温漂移校正"}
+{"seq": 3, "actor": "chen", "kind": "decision", "params": {"baselineId": "bl-m2-chord", "action": "accept"}, "narrative": "人工决定：接受 evt-m2 的弦基线"}
+{"seq": 4, "actor": "chen", "kind": "conflict-open", "params": {"baselineId": "bl-x1-chord", "action": "accept"}, "narrative": "互相冲突的人工决定(甲)：从同一版本接受 evt-x1 弦基线"}
+{"seq": 5, "actor": "li", "kind": "conflict-open", "params": {"baselineId": "bl-x1-tan", "action": "accept"}, "narrative": "互相冲突的人工决定(乙)：从同一版本接受 evt-x1 切线基线，触发可解决冲突"}
+{"seq": 6, "actor": "li", "kind": "conflict-resolve", "params": {"choice": "theirs"}, "narrative": "冲突解决：采用乙的决定，甲的候选保留不覆盖"}
+{"seq": 7, "actor": "chen", "kind": "empty-interval-check", "params": {"eventId": "evt-empty", "tStart": 82.0, "tEnd": 88.0}, "narrative": "空区间检验：区间内无采样点，派生留空并附诊断"}
+{"seq": 8, "actor": "chen", "kind": "segment-mix-check", "params": {"eventId": "evt-m1", "segmentId": "seg-cool1"}, "narrative": "循环段切换检验：试图把升温熔融事件绑到降温段，必须被拒绝"}

@@ -1,0 +1,17 @@
+{
+  "baselines": [
+    {"id": "bl-g1-chord", "eventId": "evt-g1", "method": "linear-chord"},
+    {"id": "bl-g1-tan",   "eventId": "evt-g1", "method": "left-tangent"},
+    {"id": "bl-c1-chord", "eventId": "evt-c1", "method": "linear-chord"},
+    {"id": "bl-c1-tan",   "eventId": "evt-c1", "method": "left-tangent"},
+    {"id": "bl-m1-chord", "eventId": "evt-m1", "method": "linear-chord"},
+    {"id": "bl-m1-tan",   "eventId": "evt-m1", "method": "left-tangent"},
+    {"id": "bl-k1-chord", "eventId": "evt-k1", "method": "linear-chord"},
+    {"id": "bl-k1-tan",   "eventId": "evt-k1", "method": "left-tangent"},
+    {"id": "bl-x1-chord", "eventId": "evt-x1", "method": "linear-chord"},
+    {"id": "bl-x1-tan",   "eventId": "evt-x1", "method": "left-tangent"},
+    {"id": "bl-m2-chord", "eventId": "evt-m2", "method": "linear-chord"},
+    {"id": "bl-m2-tan",   "eventId": "evt-m2", "method": "left-tangent"},
+    {"id": "bl-empty-chord", "eventId": "evt-empty", "method": "linear-chord"}
+  ]
+}
