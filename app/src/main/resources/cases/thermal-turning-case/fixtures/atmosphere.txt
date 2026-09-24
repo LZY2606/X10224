@@ -1,0 +1,2 @@
+# source: atmosphere
+N2, 50 mL/min, purge started 10 min before run

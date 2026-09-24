@@ -1,0 +1,3 @@
+# source: sample-mass (revision)
+12.10 mg
+# balance: AB-204 re-calibrated # weighed-at: 2026-09-12T14:05:00+09:00

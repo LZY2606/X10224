@@ -1,0 +1,5 @@
+# source: user-selected-tangent slot=slot:heat-melt
+# picked by reviewer l.chen on the curve page
+left-anchor-K: 383.15  # 110 C
+right-anchor-K: 398.15 # 125 C
+method: chord

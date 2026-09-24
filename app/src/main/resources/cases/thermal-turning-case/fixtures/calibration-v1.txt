@@ -1,0 +1,4 @@
+# source: temperature-calibration v1
+# standard: indium 156.60 C
+offset_K: +0.35
+slope: 1.000

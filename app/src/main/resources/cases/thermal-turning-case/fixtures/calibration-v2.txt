@@ -1,0 +1,4 @@
+# source: temperature-calibration v2 (parameter revision)
+# standards: indium 156.60 C; tin 231.93 C
+offset_K: +0.12
+slope: 1.000

@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'io.dsc'
+version = '1.0.0'
+
+sourceSets {
+    main {
+        java { srcDirs = ['app/src/main/java'] }
+        resources { srcDirs = ['app/src/main/resources'] }
+    }
+    test {
+        java { srcDirs = ['app/src/test/java'] }
+        resources { srcDirs = ['app/src/test/resources'] }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    javalinVersion = '6.5.0'
+    jacksonVersion = '2.18.3'
+}
+
+dependencies {
+    implementation "io.javalin:javalin:${javalinVersion}"
+    implementation 'org.xerial:sqlite-jdbc:3.47.1.0'
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation 'org.slf4j:slf4j-simple:2.0.16'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+application {
+    mainClass = 'io.dsc.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
+
+tasks.named('run') {
+    standardInput = System.in
+}

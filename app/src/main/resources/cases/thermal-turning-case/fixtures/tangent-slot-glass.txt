@@ -1,0 +1,5 @@
+# source: user-selected-tangent slot=slot:heat-glass
+# glass step tangents dragged by reviewer m.ito
+left-anchor-K: 320.15   # 47 C
+right-anchor-K: 336.15  # 63 C
+method: glass-tangent

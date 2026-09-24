@@ -1,0 +1,4 @@
+# source: sample-mass
+# case: thermal-turning-case
+12.45 mg
+# balance: AB-204 # weighed-at: 2026-09-10T09:12:00+09:00

@@ -1,0 +1,2 @@
+# source: scan-rate segment=seg-heat-1
+10.0 K/min (programmed; actual mean logged 10.04)
