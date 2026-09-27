@@ -1,0 +1,18 @@
+{
+ "case": "热转折案：DSC 基线、相变积分与扫描历史审阅器",
+ "edge_cases": [
+  "reversed_heat_flow",
+  "non_uniform_temperature",
+  "overlapping_transitions",
+  "cycle_segment_switch",
+  "mass_version_change",
+  "parallel_baselines",
+  "empty_interval"
+ ],
+ "narrative": [
+  "import: 仪器输出/样品质量/扫描速率/气氛/温度标定/切线分别存档",
+  "revision: 切线局部修订只影响 W-MELT 依赖",
+  "source_change: 质量版本变更使所有归一化派生过期",
+  "conflict: 两位使用者从同一版本修改 W-CRYST 切线产生冲突"
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "reference": "indium",
+ "onset_expected_c": 156.6,
+ "onset_measured_c": 155.9,
+ "offset_c": 0.7,
+ "temp_uncertainty_c": 0.3,
+ "enthalpy_uncertainty_pct": 1.5
+}
