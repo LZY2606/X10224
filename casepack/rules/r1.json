@@ -1,0 +1,15 @@
+{
+  "ruleVersion": "r1",
+  "releasedAt": "2026-09-01T09:00:00+08:00",
+  "displayName": "DSC 基线与积分规则 r1（初版）",
+  "signPolicy": "DECLARED_CONVENTION_ONLY",
+  "enthalpySignConvention": "ENDOTHERM_POSITIVE",
+  "baselineKinds": ["LINEAR_TANGENT", "CUBIC_SPLINE"],
+  "onsetMethod": "MAX_DEVIATION_TANGENT",
+  "integration": "TRAPEZOID_ON_TEMPERATURE",
+  "gridPolicy": "HONOR_ACTUAL_SPACING",
+  "overlapPolicy": "RETAIN_ALL_CANDIDATES",
+  "emptyRegionPolicy": "NO_PEAK_NO_INTEGRAL",
+  "smoothing": "NONE",
+  "notes": "初版规则：峰面积一律沿实际温度间隔做梯形积分；重叠转折不强行拆分。"
+}

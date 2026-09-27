@@ -1,0 +1,15 @@
+{
+  "ruleVersion": "r2",
+  "releasedAt": "2026-09-20T09:00:00+08:00",
+  "displayName": "DSC 基线与积分规则 r2（修订）",
+  "signPolicy": "DECLARED_CONVENTION_ONLY",
+  "enthalpySignConvention": "ENDOTHERM_POSITIVE",
+  "baselineKinds": ["LINEAR_TANGENT", "CUBIC_SPLINE", "STEP_LINEAR"],
+  "onsetMethod": "MAX_DEVIATION_TANGENT",
+  "integration": "TRAPEZOID_ON_TEMPERATURE",
+  "gridPolicy": "HONOR_ACTUAL_SPACING",
+  "overlapPolicy": "RETAIN_ALL_CANDIDATES",
+  "emptyRegionPolicy": "NO_PEAK_NO_INTEGRAL",
+  "smoothing": "SAVITZKY_GOLAY_11",
+  "notes": "修订：玻璃化新增台阶线性基线；全曲线改为 11 点 Savitzky-Golay 预平滑，仅影响后续派生。"
+}
